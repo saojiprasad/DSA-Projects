@@ -1,0 +1,117 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+#sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    grid-template-rows: repeat(9, 40px);
+    gap: 2px;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    background-color: #e0f7fa;
+    font-size: 18px;
+    box-sizing: border-box;
+    user-select: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.cell.animated {
+    animation: solveAnimation 0.3s ease;
+}
+
+@keyframes solveAnimation {
+    from {
+        background-color: #b2ebf2;
+    }
+    to {
+        background-color: #e0f7fa;
+    }
+}
+
+.cell:nth-child(3n) {
+    border-right: 2px solid #000;
+}
+
+.cell:nth-child(3n + 1) {
+    border-left: 2px solid #000;
+}
+
+.cell:nth-child(n + 19):nth-child(-n + 21),
+.cell:nth-child(n + 46):nth-child(-n + 48),
+.cell:nth-child(n + 73):nth-child(-n + 75) {
+    border-bottom: 2px solid #000;
+}
+
+.cell:nth-child(-n + 3),
+.cell:nth-child(-n + 12):nth-child(n + 11),
+.cell:nth-child(-n + 21):nth-child(n + 20) {
+    border-top: 2px solid #000;
+}
+
+.cell:focus {
+    background-color: #b2ebf2;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+#reset-btn {
+    background-color: #007BFF;
+}
+
+#reset-btn:hover {
+    background-color: #0056b3;
+}
+
+#solve-btn {
+    background-color: #28a745;
+}
+
+#solve-btn:hover {
+    background-color: #218838;
+}
